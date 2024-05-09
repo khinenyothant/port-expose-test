@@ -1,0 +1,28 @@
+services:
+    nginx_web_1:
+        container_name: nginx_web_1
+        build: ./nginx/web1
+        ports:
+        - 8080:80  # Publish container port 80 to host port 8080
+        networks:
+            public_net:
+                ipv4_address: 172.16.0.10
+                aliases: 
+                - nginx1
+    nginx_web_2:
+        container_name: nginx_web_2
+        build: ./nginx/web2
+        ports:
+        - 8444:444  # Publish container port 444 to host port 8444
+        networks:
+            public_net:
+                ipv4_address: 172.16.0.20
+                aliases: 
+                - nginx2
+networks:
+    public_net:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+            - subnet: 172.16.0.0/24
