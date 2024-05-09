@@ -18,6 +18,7 @@ To set up two web servers on your VM, where Server1 listens on the default port 
 ```sh
 cd expose-test
 docker compose up
+```
 
 
 ```sh
